@@ -1,20 +1,16 @@
- document.write("update")
+ peer = new Peer(null, {
+                        debug: 2
+                    });
+ conn = peer.connect(3245.value, {
+                        reliable: true
+                    });
 
-let peer = new Peer(); 
+                    conn.on('open', function () {
+                        status.innerHTML = "Connected to: " + conn.peer;
+                        console.log("Connected to: " + conn.peer);
 
- peer.connect(3245);
-// on open will be launch when you successfully connect to PeerServer
-
-peer.on('open', function(){
-  // here you have conn.id
- document.write("Open")
-});
-
-peer.on('connection', function(){
-  // here you have conn.id
-
- peer.on('open', function(){
-  peer.send('hi!');
- })
- 
-});
+                        // Check URL params for comamnds that should be sent immediately
+                        var command = getUrlParam("command");
+                        if (command)
+                            conn.send(command);
+                    });
