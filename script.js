@@ -2,9 +2,9 @@
                         debug: 2
                     });
 
- peer.connect(3245);
+ let conn = peer.connect(3245);
 
-peer.on('connection', function (c) {
+conn.on('connection', function (c) {
                         // Disallow incoming connections
                         c.on('open', function() {
                             c.send("Sender does not accept incoming connections");
