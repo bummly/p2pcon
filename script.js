@@ -1,7 +1,7 @@
  peer = new Peer(null, {
                         debug: 2
                     });
- conn = peer.connect(3245.value, {
+ conn = peer.connect(3245, {
                         reliable: true
                     });
 
@@ -10,7 +10,7 @@
                         console.log("Connected to: " + conn.peer);
 
                         // Check URL params for comamnds that should be sent immediately
-                        var command = getUrlParam("command");
-                        if (command)
+                        var command = window.location
+                       
                             conn.send(command);
-                    });
+                    );
