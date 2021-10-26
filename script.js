@@ -1,16 +1,13 @@
  const peer = new Peer(null, {
                         debug: 2
                     });
- let conn = peer.connect(3245, {
-                        reliable: true
+
+ peer.connect(3245);
+
+peer.on('connection', function (c) {
+                        // Disallow incoming connections
+                        c.on('open', function() {
+                            c.send("Sender does not accept incoming connections");
+                            //setTimeout(function() { c.close(); }, 500);
+                        });
                     });
-
-                    conn.on('open', function () {
-                        
-                       document.write("Connected to: " + conn.peer);
-
-                        // Check URL params for comamnds that should be sent immediately
-                       
-                       
-                            conn.send("Hey");
-                    );
