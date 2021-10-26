@@ -1,8 +1,15 @@
 let peer = new Peer(); 
 
-var conn = peer.connect(3245);
+ peer.connect(3245);
 // on open will be launch when you successfully connect to PeerServer
-conn.on('open', function(){
+
+peer.on('open', function(){
   // here you have conn.id
-  conn.send('hi!');
+ document.write("Open")
+});
+
+peer.on('connection', function(){
+  // here you have conn.id
+  document.write("Open")
+  peer.send('hi!');
 });
