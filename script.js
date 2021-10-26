@@ -1,3 +1,5 @@
+ document.write("update")
+
 let peer = new Peer(); 
 
  peer.connect(3245);
@@ -10,6 +12,9 @@ peer.on('open', function(){
 
 peer.on('connection', function(){
   // here you have conn.id
-  document.write("Open")
+
+ peer.on('open', function(){
   peer.send('hi!');
+ })
+ 
 });
