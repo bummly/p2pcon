@@ -1,7 +1,7 @@
  const peer = new Peer(null, {
                         debug: 2
                     });
- letconn = peer.connect(3245, {
+ let conn = peer.connect(3245, {
                         reliable: true
                     });
 
